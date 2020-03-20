@@ -1,10 +1,13 @@
 package main;
 
+import DAO.AuthorDAO;
 import DAO.BookDAO;
 import DAO.UserDAO;
+import Entity.Book;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Test{
     public static void main(String[] args) {
@@ -12,7 +15,12 @@ public class Test{
         try(Session session = HibernateUtil.getSession()){
             session.beginTransaction();
             UserDAO u = new UserDAO();
-            BookDAO bookDAO = new BookDAO();
+            AuthorDAO authorDAO = new AuthorDAO();
+
+            Set<Book> b = authorDAO.getBooksOfCoauthor("First", "Author1");
+            for(Book book:b){
+                System.out.println(book.getName());
+            }
             /*ArrayList<String> l = bookDAO.getCountOfBookUsageByExamples("Book1");
             for(String s:l) System.out.println(s);*/
             //System.out.println(u.getUserAverageAgeByAuthor("First", "Author1"));
@@ -24,27 +32,6 @@ public class Test{
         }
         catch(Throwable e){ e.printStackTrace();}
 
-            /*List<Book> list = null;
-            try(Session session = HibernateUtil.getSession()) {
-                Query query = session.createQuery("FROM Book");
-                list = (List<Book>) query.list();
-                BookExampleDAO bookExampleDAO = new BookExampleDAO();
-                ArrayList<Long> arrayList = (ArrayList<Long>) bookExampleDAO.getBookExampleInfoByBookName("Book2");
-                System.out.println("Count of all: " + arrayList.get(0) + " ,count of available: " + arrayList.get(1) + " ,count of using: " + arrayList.get(2));
-                AuthorDAO authorDAO = new AuthorDAO();
-                ArrayList<String> l = (ArrayList<String>) authorDAO.getBooksOfAuthor("third", "author");
-                for (String s : l) System.out.println(l);
-            }
-            catch (Throwable e) {e.printStackTrace();}
-
-
-
-        if(list != null && !list.isEmpty()){
-            for(Book book: list) System.out.println(
-
-                    "Назва книжки " + book.getName() + " , автор " +
-                    book.getAuthor().getName() + " " + book.getAuthor().getSurname());
-        }*/
 
     }
 

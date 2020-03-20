@@ -46,7 +46,7 @@ public class ElementDAOImp <E> implements ElementDAO <E> {
     }
 
     @Override
-    public E get(Long eID) {
+    public E get(long eID) {
         Session session = null;
         E e = null;
         try{

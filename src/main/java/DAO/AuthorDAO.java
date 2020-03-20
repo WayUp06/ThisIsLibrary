@@ -1,12 +1,14 @@
 package DAO;
 
 import Entity.Author;
+import Entity.Book;
 import main.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class AuthorDAO extends ElementDAOImp<Author> {
     public AuthorDAO(Class<Author> elementClass) {
@@ -36,5 +38,26 @@ public class AuthorDAO extends ElementDAOImp<Author> {
             if((session != null) && (session.isOpen())) session.close();
         }
         return list;
+    }
+
+
+    /**
+     * @return set of books with this coauthor
+     */
+    public Set<Book> getBooksOfCoauthor(String name, String surname){
+        Session session = null;
+        Set<Book> b;
+        try{
+            session = HibernateUtil.getSession();
+            session.beginTransaction();
+            Query query = session.createQuery("from Author  a where a.name =:name and a.surname =:surname");
+            query.setParameter("name", name);
+            query.setParameter("surname", surname);
+            Author a = (Author) query.uniqueResult();
+            b = (Set<Book>) a.getBooks();
+        } finally{
+            if((session!=null) && session.isOpen()) session.close();
+        }
+        return b;
     }
 }

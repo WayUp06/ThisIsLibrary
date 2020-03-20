@@ -36,7 +36,7 @@ public class Author {
     private Set<Book> book;
 
 
-    @ManyToMany(mappedBy = "coauthors")
+    @ManyToMany(mappedBy = "coauthors", fetch = FetchType.EAGER)
     private Set<Book> books;
 
 

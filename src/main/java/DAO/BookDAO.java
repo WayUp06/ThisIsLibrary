@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class BookDAO extends ElementDAOImp<Book> {
+    private Class<BookDAO> elementClass = BookDAO.class;
+
     public BookDAO(Class<Book> elementClass) {
         super(elementClass);
     }
