@@ -37,7 +37,4 @@ public class AuthorDAO extends ElementDAOImp<Author> {
         }
         return list;
     }
-
-
-
 }

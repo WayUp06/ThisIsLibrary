@@ -16,13 +16,14 @@ public class Test{
             /*ArrayList<String> l = bookDAO.getCountOfBookUsageByExamples("Book1");
             for(String s:l) System.out.println(s);*/
             //System.out.println(u.getUserAverageAgeByAuthor("First", "Author1"));
-            ArrayList<String> l = u.getDebtorsInPast(1);
-            for(String s:l) System.out.println(s);
-
+            //ArrayList<String> l = u.getDebtorsInPast(1);
+            //for(String s:l) System.out.println(s);
+            System.out.println("test");
             session.getTransaction().commit();
-
+            session.close();
         }
         catch(Throwable e){ e.printStackTrace();}
+
             /*List<Book> list = null;
             try(Session session = HibernateUtil.getSession()) {
                 Query query = session.createQuery("FROM Book");
