@@ -3,6 +3,7 @@ package main;
 import DAO.AuthorDAO;
 import DAO.BookDAO;
 import DAO.UserDAO;
+import Entity.Author;
 import Entity.Book;
 import org.hibernate.Session;
 
@@ -15,7 +16,7 @@ public class Test{
         try(Session session = HibernateUtil.getSession()){
             session.beginTransaction();
             UserDAO u = new UserDAO();
-            AuthorDAO authorDAO = new AuthorDAO();
+            AuthorDAO authorDAO = new AuthorDAO(Author.class);
 
             Set<Book> b = authorDAO.getBooksOfCoauthor("First", "Author1");
             for(Book book:b){

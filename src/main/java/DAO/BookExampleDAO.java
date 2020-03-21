@@ -20,7 +20,7 @@ public class BookExampleDAO extends ElementDAOImp<BookExample> {
      *
      * @return count of book examples published after 1991, exclusive
      */
-    public Long getBooksCountDuringIndependence(){
+    public Long getBookExamplesCountDuringIndependence(){
         Session session = null;
         Long count;
         try{

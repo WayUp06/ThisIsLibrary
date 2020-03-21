@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Optional;
 import java.util.Set;
 /*  book - from OneToMany relation with author
  *   books - fro ManyToMany relationship with coauthors*/

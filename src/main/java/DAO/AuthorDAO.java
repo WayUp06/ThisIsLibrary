@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class AuthorDAO extends ElementDAOImp<Author> {
@@ -15,7 +16,7 @@ public class AuthorDAO extends ElementDAOImp<Author> {
         super(elementClass);
     }
 
-    public AuthorDAO(){}
+    //public AuthorDAO(){}
 
     /**
      * @param name - name of author

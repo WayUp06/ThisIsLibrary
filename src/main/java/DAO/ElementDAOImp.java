@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public class ElementDAOImp <E> implements ElementDAO <E> {
 
@@ -46,16 +47,16 @@ public class ElementDAOImp <E> implements ElementDAO <E> {
     }
 
     @Override
-    public E get(long eID) {
+    public Optional<E> get(long eID) {
         Session session = null;
         E e = null;
         try{
             session = HibernateUtil.getSession();
-            e = (E)session.get(elementClass,eID);
+            e = session.get(elementClass,eID);
         }finally{
             if((session != null) && (session.isOpen())) session.close();
         }
-        return e;
+        return (Optional<E>) e;
     }
 
     @Override

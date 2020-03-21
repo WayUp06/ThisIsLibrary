@@ -84,7 +84,7 @@ public class BookDAO extends ElementDAOImp<Book> {
             ArrayList <Long> list = (ArrayList<Long>) query.list();
             UsageDAO usageDAO = new UsageDAO();
             for(long i:list) {
-                Usage usage = usageDAO.get(i);
+                Usage usage = usageDAO.get(i).get();
                 LocalDate take = usage.getTakeDate();
                 Optional<LocalDate> ret = usage.getReturnDate();
                 if(ret.isPresent()){
