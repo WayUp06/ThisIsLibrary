@@ -16,12 +16,7 @@ public class Test{
         try(Session session = HibernateUtil.getSession()){
             session.beginTransaction();
             UserDAO u = new UserDAO();
-            AuthorDAO authorDAO = new AuthorDAO(Author.class);
-
-            Set<Book> b = authorDAO.getBooksOfCoauthor("First", "Author1");
-            for(Book book:b){
-                System.out.println(book.getName());
-            }
+            System.out.println(u.getPeriodOfLibraryUsing(8));
             /*ArrayList<String> l = bookDAO.getCountOfBookUsageByExamples("Book1");
             for(String s:l) System.out.println(s);*/
             //System.out.println(u.getUserAverageAgeByAuthor("First", "Author1"));
